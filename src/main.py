@@ -57,14 +57,16 @@ def post_tweet(cfg: DictConfig) -> None:
 
     try:
         secrets = OmegaConf.load(cfg.twitter.path_to_secrets)
-        api_key = secrets['twitter']['api_key']
-        api_secret = secrets['twitter']['api_secret']
-        access_token = secrets['twitter']['access_token']
-        access_token_secret = secrets['twitter']['access_token_secret']
-        logger.info('secrets loaded')
 
     except FileNotFoundError:
-        logger.warn('secrets.yaml not found, attempting to load from environment variables.')
+        logger.warn('secrets.yaml not found, attempting to load from hydra config')
+        api_key = cfg.twitter.api_key
+        api_secret = cfg.twitter.api_secret
+        access_token = cfg.twitter.access_token
+        access_token_secret = cfg.twitter.access_token_secret
+
+    except Exception as e:
+        logger.warn('attempting to load from environment variables.')
         import os
         api_key = os.getenv('api_key')
         api_secret = os.getenv('api_secret')

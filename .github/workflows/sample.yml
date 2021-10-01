@@ -39,4 +39,4 @@ jobs:
 
       # Runs a set of commands using the runners shell
       - name: Create Tweet
-        run: python src/main.py
+        run: python src/main.py -m twitter.api_key=${{ secrets.API_KEY }} twitter.api_secret=${{ secrets.API_SECRET }} twitter.access_token=${{ secrets.ACCESS_TOKEN }} twitter.access_token_secret=${{ secrets.ACCESS_TOKEN_SECRET }}
