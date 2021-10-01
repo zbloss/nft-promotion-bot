@@ -66,10 +66,10 @@ def post_tweet(cfg: DictConfig) -> None:
     except FileNotFoundError:
         logger.warn('secrets.yaml not found, attempting to load from environment variables.')
         import os
-        api_key = os.getenv('API_KEY')
-        api_secret = os.getenv('API_SECRET')
-        access_token = os.getenv('ACCESS_TOKEN')
-        access_token_secret = os.getenv('ACCESS_TOKEN_SECRET')
+        api_key = os.getenv('api_key')
+        api_secret = os.getenv('api_secret')
+        access_token = os.getenv('access_token')
+        access_token_secret = os.getenv('access_token_secret')
         logger.info('secrets loaded from environment variables')
 
     auth = tweepy.OAuthHandler(api_key, api_secret)
