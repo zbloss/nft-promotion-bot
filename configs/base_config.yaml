@@ -3,5 +3,8 @@ opensea:
   collection: "monsters-evolution"
 
 twitter:
-  path_to_secrets: '../../../secrets.yaml'
+  api_key: null
+  api_secret: null
+  access_token: null
+  access_token_secret: null
   hashtags: "#nfts #nft #nftart #nftartist #nftcollector #cryptoart #digitalart #nftcommunity #art #crypto #ethereum #blockchain #cryptocurrency #cryptoartist #opensea #nftcollectors"
