@@ -65,15 +65,6 @@ def post_tweet(cfg: DictConfig) -> None:
         access_token = cfg.twitter.access_token
         access_token_secret = cfg.twitter.access_token_secret
 
-    except Exception as e:
-        logger.warn('attempting to load from environment variables.')
-        import os
-        api_key = os.getenv('api_key')
-        api_secret = os.getenv('api_secret')
-        access_token = os.getenv('access_token')
-        access_token_secret = os.getenv('access_token_secret')
-        logger.info('secrets loaded from environment variables')
-
     auth = tweepy.OAuthHandler(api_key, api_secret)
     auth.set_access_token(access_token, access_token_secret)
     api = tweepy.API(auth)
