@@ -132,3 +132,4 @@ secrets.yaml
 config/
 outputs/
 .DS_Store
+multirun/
