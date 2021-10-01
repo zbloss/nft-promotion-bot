@@ -54,16 +54,11 @@ def post_tweet(cfg: DictConfig) -> None:
     log_fmt = '%(asctime)s - %(name)s - %(levelname)s - %(message)s'
     logging.basicConfig(level=logging.INFO, format=log_fmt)
     logger = logging.getLogger(__name__)
-
-    try:
-        secrets = OmegaConf.load(cfg.twitter.path_to_secrets)
-
-    except FileNotFoundError:
-        logger.warn('secrets.yaml not found, attempting to load from hydra config')
-        api_key = cfg.twitter.api_key
-        api_secret = cfg.twitter.api_secret
-        access_token = cfg.twitter.access_token
-        access_token_secret = cfg.twitter.access_token_secret
+ 
+    api_key = cfg.twitter.api_key
+    api_secret = cfg.twitter.api_secret
+    access_token = cfg.twitter.access_token
+    access_token_secret = cfg.twitter.access_token_secret
 
     auth = tweepy.OAuthHandler(api_key, api_secret)
     auth.set_access_token(access_token, access_token_secret)
