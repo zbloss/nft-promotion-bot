@@ -1,0 +1,4 @@
+requests==2.26.0
+omegaconf==2.1.1
+tweepy==4.0.0
+hydra_core==1.1.1
