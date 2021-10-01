@@ -33,14 +33,15 @@ def find_buyers(cfg: DictConfig) -> None:
     for tweet_number, result in enumerate(search_results):
         tweet_details = result._json
         tweet_id = tweet_details['id_str']
-        api.update_status(
-            status=f"https://opensea.io/collection/{cfg.opensea.collection}",
-            in_reply_to_status_id=tweet_id,
-            auto_populate_reply_metadata=True
-        )
-
-        logger.info(f'tweet posted: {tweet_number}')
-
+        try:
+            api.update_status(
+                status=f"https://opensea.io/collection/{cfg.opensea.collection}",
+                in_reply_to_status_id=tweet_id,
+                auto_populate_reply_metadata=True
+            )
+            logger.info(f'tweet posted: {tweet_number}')
+        except:
+            pass
 
 if __name__ == "__main__":
     find_buyers()
