@@ -5,7 +5,7 @@ name: NFT Replying
 # Controls when the workflow will run
 on:
   schedule:
-    - cron: "0 */1 * * *"
+    - cron: "0 */12 * * *"
   push:
     branches:
       - main
